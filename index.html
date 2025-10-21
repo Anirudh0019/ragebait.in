@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ragebait - Definition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', serif;
+            background-color: #fff;
+            color: #333;
+        }
+
+        header {
+            padding: 20px 40px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 40px;
+        }
+
+        .definition-box {
+            background-color: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 3px;
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        .definition-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .definition-number {
+            background-color: #4a90e2;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .definition-text {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .example-section {
+            background-color: #f9f9f9;
+            border-left: 3px solid #4a90e2;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .example-label {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .example-text {
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #1d2439;
+        }
+
+        .vote-section {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .vote-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            background: white;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.2s;
+        }
+
+        .vote-btn:hover {
+            background-color: #f0f0f0;
+        }
+
+        .thumbs-up:hover {
+            border-color: #4caf50;
+            color: #4caf50;
+        }
+
+        .thumbs-down:hover {
+            border-color: #f44336;
+            color: #f44336;
+        }
+
+        .count {
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .word-title {
+                font-size: 36px;
+            }
+            
+            .definition-text {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">ragebait.in</div>
+    </header>
+
+    <div class="container">
+        <div class="definition-box">
+            <div class="definition-header">
+                <div class="definition-number">1</div>
+            </div>
+            <div class="definition-text">
+                Content deliberately designed to provoke anger, outrage, or strong negative emotional reactions, 
+                typically for the purpose of generating engagement, clicks, or views. Common on social media platforms 
+                where controversial takes, inflammatory statements, or intentionally wrong opinions are shared to 
+                farm interactions.
+            </div>
+
+            <div class="example-section">
+                <div class="example-label">Example:</div>
+                <div class="example-text">
+                    "That tweet saying 'pizza is better without cheese' is obvious <span class="highlight">ragebait</span>. 
+                    They just want people arguing in the replies to boost engagement."
+                </div>
+            </div>
+
+            <div class="example-section">
+                <div class="example-label">Example:</div>
+                <div class="example-text">
+                    "Don't fall for the <span class="highlight">ragebait</span>. They posted that ridiculous hot take 
+                    knowing it would go viral from people dunking on it."
+                </div>
+            </div>
+
+            <div class="vote-section">
+                <button class="vote-btn thumbs-up" onclick="vote('up')">
+                    👍 <span class="count" id="upvotes">2847</span>
+                </button>
+                <button class="vote-btn thumbs-down" onclick="vote('down')">
+                    👎 <span class="count" id="downvotes">142</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>ragebait.in © 2025 | Defining internet culture, one word at a time</p>
+    </footer>
+
+    <script>
+        let upvotes = 2847;
+        let downvotes = 142;
+        let userVote = null;
+
+        function vote(type) {
+            if (userVote === type) {
+                // Remove vote
+                if (type === 'up') {
+                    upvotes--;
+                } else {
+                    downvotes--;
+                }
+                userVote = null;
+            } else {
+                // Add new vote
+                if (userVote) {
+                    // Remove previous vote
+                    if (userVote === 'up') {
+                        upvotes--;
+                    } else {
+                        downvotes--;
+                    }
+                }
+                
+                if (type === 'up') {
+                    upvotes++;
+                } else {
+                    downvotes++;
+                }
+                userVote = type;
+            }
+
+            document.getElementById('upvotes').textContent = upvotes;
+            document.getElementById('downvotes').textContent = downvotes;
+
+            // Visual feedback
+            const buttons = document.querySelectorAll('.vote-btn');
+            buttons.forEach(btn => {
+                btn.style.borderWidth = '2px';
+                btn.style.fontWeight = 'normal';
+            });
+
+            if (userVote) {
+                const activeBtn = document.querySelector(`.thumbs-${userVote}`);
+                activeBtn.style.borderWidth = '3px';
+                activeBtn.style.fontWeight = 'bold';
+            }
+        }
+    </script>
+</body>
+</html>
